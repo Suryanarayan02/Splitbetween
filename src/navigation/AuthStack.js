@@ -11,8 +11,8 @@ import navigationStrings from './navigationStrings';
 const AuthStack = Stack => {
   return (
     <>
-      <Stack.Screen name={navigationStrings.SIGNUP} component={Signup} />
       <Stack.Screen name={navigationStrings.LOGIN} component={Login} />
+      <Stack.Screen name={navigationStrings.SIGNUP} component={Signup} />
 
       <Stack.Screen
         name={navigationStrings.FORGOT_PASSWORD}

@@ -21,7 +21,7 @@ export default function TextInputWithImage(props) {
       style={{
         ...commonStyles.border,
         borderColor: colors.borderColor,
-        flex: 1,
+        // flex: 1,
         flexDirection: 'row',
         marginTop: moderateScale(18),
         paddingHorizontal: moderateScale(8),
