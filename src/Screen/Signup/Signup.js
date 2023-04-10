@@ -50,6 +50,7 @@ const Signup = props => {
           backgroundColor: colors.white,
         }}>
         <KeyboardAwareScrollView
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={{flexGrow: 1}}
           style={{
             flexGrow: 1,
