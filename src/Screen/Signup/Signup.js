@@ -1,5 +1,5 @@
 import {View, Text, Image, ImageBackground} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import WrapperContainer from '../../Component/WrapperContainer';
 import HeaderComponent from '../../Component/HeaderComponent';
 import imagePath from '../../constants/imagePath';
@@ -17,6 +17,15 @@ import TextInputForMobile from '../../Component/TextInputForMobile';
 
 const Signup = props => {
   const {navigation} = props;
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    phone: '',
+  });
+  const updateState = data => setState(state => ({...state, ...data}));
+  const onChangeText = key => value => updateState({[key]: value});
   return (
     <WrapperContainer
       bgColor={colors.backGroundColor}
@@ -37,7 +46,7 @@ const Signup = props => {
 
       <View
         style={{
-          flex: 1.6,
+          flex: 1.7,
           backgroundColor: colors.white,
         }}>
         <KeyboardAwareScrollView
@@ -60,23 +69,40 @@ const Signup = props => {
             }}>
             {strings.pleaseEnterDetail}
           </Text>
-          <TextInputWithImage placeholder={strings.fullName} />
-          <TextInputWithImage placeholder={strings.email} />
           <TextInputWithImage
+            value={state.name}
+            onChangeText={onChangeText('name')}
+            placeholder={strings.fullName}
+          />
+          <TextInputWithImage
+            value={state.email}
+            onChangeText={onChangeText('email')}
+            placeholder={strings.email}
+          />
+          <TextInputWithImage
+            value={state.password}
+            onChangeText={onChangeText('password')}
             placeholder={strings.password}
             rightImage={imagePath.eyeOff}
           />
           <TextInputWithImage
+            value={state.confirmPassword}
+            onChangeText={onChangeText('confirmPassword')}
             placeholder={strings.confirmPassword}
             rightImage={imagePath.eyeOff}
           />
-          <TextInputForMobile placeholder={strings.mobileNumber} />
+          <TextInputForMobile
+            value={state.phone}
+            onChangeText={onChangeText('phone')}
+            placeholder={strings.mobileNumber}
+          />
           <ButtonWithIcon text={strings.signup} />
           <Text
             style={{
               textAlign: 'center',
               color: colors.greyText,
               fontSize: textScale(12),
+              marginBottom: moderateScaleVertical(48),
             }}>
             {strings.splitwiseTermText}
           </Text>

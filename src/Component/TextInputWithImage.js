@@ -12,8 +12,9 @@ export default function TextInputWithImage(props) {
     secureTextEntry = false,
     containerStyle = {},
     placeholder = '',
-    leftImage ='',
+    leftImage = '',
     rightImage = '',
+    value = '',
   } = props;
   return (
     <View
@@ -30,14 +31,10 @@ export default function TextInputWithImage(props) {
         alignItems: 'center',
         ...containerStyle,
       }}>
-      {leftImage && (
-        <Image
-          style={{opacity: 0.7}}
-          source={leftImage}
-        />
-      )}
+      {leftImage && <Image style={{opacity: 0.7}} source={leftImage} />}
       <View style={{flex: 1}}>
         <TextInput
+          value={value}
           onChangeText={onChangeText}
           secureTextEntry={secureTextEntry}
           style={{
@@ -45,17 +42,13 @@ export default function TextInputWithImage(props) {
             paddingTop: 0,
             paddingHorizontal: 8,
             paddingBottom: 0,
-            color: colors.greyText,
+            color: colors.black,
           }}
+          placeholderTextColor={colors.greyText}
           placeholder={placeholder}
         />
       </View>
-      {rightImage && (
-        <Image
-          style={{opacity: 0.7}}
-          source={rightImage}
-        />
-      )}
+      {rightImage && <Image style={{opacity: 0.7}} source={rightImage} />}
     </View>
   );
 }

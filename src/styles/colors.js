@@ -3,4 +3,5 @@ export default {
   white: '#ffffff',
   backGroundColor: 'whitesmoke',
   greyText: '#a6a3a2',
+  black: '#000000',
 };

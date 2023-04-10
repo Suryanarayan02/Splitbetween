@@ -9,7 +9,6 @@ const TextInputForMobile = props => {
   const [show, setShow] = useState(false);
   const [countryCode, setCountryCode] = useState('');
   const [flag, setFlag] = useState('');
-  let {placeholder} = props;
   return (
     <TouchableOpacity
       onPress={() => setShow(true)}
@@ -34,7 +33,7 @@ const TextInputForMobile = props => {
           {flag} {countryCode}
         </Text>
       </View>
-      <TextInputWithImage placeholder={placeholder} />
+      <TextInputWithImage {...props} />
       <CountryPicker
         show={show}
         // when picker button press you will get the country object with dial code
