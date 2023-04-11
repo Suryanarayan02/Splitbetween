@@ -3,6 +3,7 @@ import {
   ForgotPassword,
   Login,
   MyWebView,
+  OnboardScreen,
   OtpScreen,
   Signup,
 } from '../Screen';
@@ -11,6 +12,10 @@ import navigationStrings from './navigationStrings';
 const AuthStack = Stack => {
   return (
     <>
+      <Stack.Screen
+        name={navigationStrings.ONBOARD}
+        component={OnboardScreen}
+      />
       <Stack.Screen name={navigationStrings.LOGIN} component={Login} />
       <Stack.Screen name={navigationStrings.SIGNUP} component={Signup} />
 

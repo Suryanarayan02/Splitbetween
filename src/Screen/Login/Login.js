@@ -32,6 +32,7 @@ const Login = props => {
         resizeMode="contain"
         style={{flex: 1, backgroundColor: colors.white}}>
         <HeaderComponent
+          onPressLeft={() => navigation.goBack()}
           leftIcon={imagePath.back}
           leftImageStyle={{
             borderWidth: 1,

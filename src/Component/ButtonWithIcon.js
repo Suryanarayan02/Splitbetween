@@ -39,7 +39,7 @@ const ButtonWithIcon = props => {
         style={{
           fontSize: textScale(13),
           fontWeight: 'bold',
-          flex: 1,
+          // flex: 1,
           color: colors.white,
           textAlign: 'center',
           ...textStyle,

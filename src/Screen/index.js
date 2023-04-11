@@ -1,3 +1,5 @@
+export  {default as OnboardScreen} from './OnboardScreen/OnboardScreen';
+
 // onBoardscreen
 export {default as ForgotPassword} from './Password/Password';
 export {default as OtpScreen} from './OtpScreen/OtpScreen';

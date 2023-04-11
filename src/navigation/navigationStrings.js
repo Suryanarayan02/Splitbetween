@@ -1,5 +1,6 @@
 export default {
   LOGIN: 'Login',
+  ONBOARD: 'Onboard',
   OTP_SCREEN: 'OtpScreen',
   SIGNUP: 'SingUp',
   SIGNIN: 'Signin',

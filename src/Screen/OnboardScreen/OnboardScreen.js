@@ -14,8 +14,9 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import TextInputWithImage from '../../Component/TextInputWithImage';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import TextInputForMobile from '../../Component/TextInputForMobile';
+import navigationStrings from '../../navigation/navigationStrings';
 
-const Signup = props => {
+const OnboardScreen = props => {
   const {navigation} = props;
   const [state, setState] = useState({
     name: '',
@@ -31,28 +32,27 @@ const Signup = props => {
       bgColor={colors.backGroundColor}
       statusBarColor={colors.white}>
       <ImageBackground
-        source={imagePath.signupGraphic}
+        source={imagePath.graphic}
         resizeMode="contain"
         style={{flex: 1, backgroundColor: colors.white}}>
-        <HeaderComponent
-          onPressLeft={() => navigation.goBack()}
+        {/* <HeaderComponent
           leftIcon={imagePath.back}
           leftImageStyle={{
             borderWidth: 1,
             borderRadius: 25,
             borderColor: 'whitesmoke',
           }}
-        />
+        /> */}
       </ImageBackground>
 
       <View
         style={{
-          flex: 1.7,
+          flex: 1.2,
           backgroundColor: colors.white,
         }}>
         <KeyboardAwareScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{flexGrow: 1}}
+          contentContainerStyle={{flexGrow: 1, justifyContent: 'space-around'}}
           style={{
             flexGrow: 1,
             backgroundColor: colors.backGroundColor,
@@ -62,43 +62,57 @@ const Signup = props => {
             borderTopLeftRadius: moderateScaleVertical(34),
             // paddingBottom: moderateScaleVertical(108),
           }}>
-          <Text style={{fontSize: textScale(20)}}>{strings.signup}</Text>
-          <Text
+          <ButtonWithIcon
+            onPress={() => navigation.navigate(navigationStrings.SIGNUP)}
+            text={strings.signup}
+          />
+          <ButtonWithIcon
+            onPress={() => navigation.navigate(navigationStrings.LOGIN)}
+            containerStyle={{
+              backgroundColor: colors.white,
+              borderColor: colors.themeColor,
+              borderWidth: 1,
+            }}
+            textStyle={{color: colors.themeColor}}
+            text={strings.login}
+          />
+          <View
             style={{
-              fontSize: textScale(12),
-              lineHeight: textScale(15),
-              color: colors.greyText,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              height: moderateScaleVertical(48),
             }}>
-            {strings.pleaseEnterDetail}
-          </Text>
-          <TextInputWithImage
-            value={state.name}
-            onChangeText={onChangeText('name')}
-            placeholder={strings.fullName}
+            <View
+              style={{flex: 1, borderWidth: 1, borderColor: colors.greyText}}
+            />
+            <Text
+              style={{
+                textAlign: 'center',
+                color: colors.greyText,
+                fontSize: textScale(14),
+                marginHorizontal: moderateScale(10),
+                //   marginBottom: moderateScaleVertical(48),
+              }}>
+              {strings.or}
+            </Text>
+            <View
+              style={{flex: 1, borderWidth: 1, borderColor: colors.greyText}}
+            />
+          </View>
+          <ButtonWithIcon
+            containerStyle={{
+              backgroundColor: colors.white,
+              borderColor: colors.black,
+              borderWidth: 1,
+            }}
+            textStyle={{
+              color: colors.black,
+              marginHorizontal: moderateScale(12),
+            }}
+            leftSource={imagePath.google}
+            text={strings.signInwithGoogle}
           />
-          <TextInputWithImage
-            value={state.email}
-            onChangeText={onChangeText('email')}
-            placeholder={strings.email}
-          />
-          <TextInputWithImage
-            value={state.password}
-            onChangeText={onChangeText('password')}
-            placeholder={strings.password}
-            rightImage={imagePath.eyeOff}
-          />
-          <TextInputWithImage
-            value={state.confirmPassword}
-            onChangeText={onChangeText('confirmPassword')}
-            placeholder={strings.confirmPassword}
-            rightImage={imagePath.eyeOff}
-          />
-          <TextInputForMobile
-            value={state.phone}
-            onChangeText={onChangeText('phone')}
-            placeholder={strings.mobileNumber}
-          />
-          <ButtonWithIcon text={strings.signup} />
           <Text
             style={{
               textAlign: 'center',
@@ -106,7 +120,9 @@ const Signup = props => {
               fontSize: textScale(12),
               marginBottom: moderateScaleVertical(48),
             }}>
-            {strings.splitwiseTermText}
+            {strings.term}
+            <Text> | {strings.privacy}</Text>
+            <Text> | {strings.contactus}</Text>
           </Text>
         </KeyboardAwareScrollView>
       </View>
@@ -114,4 +130,4 @@ const Signup = props => {
   );
 };
 
-export default Signup;
+export default OnboardScreen;

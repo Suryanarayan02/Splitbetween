@@ -1,4 +1,12 @@
 export default {
+  // Onboard
+  signup: 'Sign Up',
+  login: 'Login',
+  or: 'or',
+  signInwithGoogle: 'Sign in With Google',
+  term: 'Term',
+  privacy: 'Privacy Policy',
+  contactus: 'Contact us',
   // signup
   signup: 'Sign Up',
   pleaseEnterDetail: 'Please enter your personal details.',
