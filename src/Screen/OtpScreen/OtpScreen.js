@@ -42,7 +42,11 @@ export class OtpScreen extends Component {
     const {termSelected} = this.state;
     this.setState({termSelected: !termSelected});
   };
-
+  onPressVerify = () => {
+    if (this.state.otp.length < 4) {
+      alert('Please complete OTP.');
+    } else this.props.navigation.navigate(navigationStrings.RESET_PASSWORD);
+  };
   render() {
     const {phone, termSelected, showUserModal, isLoading, userData} =
       this.state;
@@ -124,11 +128,7 @@ export class OtpScreen extends Component {
                 {strings.resendOpt}
               </Text>
               <ButtonWithIcon
-                onPress={() =>
-                  this.props.navigation.navigate(
-                    navigationStrings.RESET_PASSWORD,
-                  )
-                }
+                onPress={this.onPressVerify}
                 text={strings.verify}
               />
             </View>

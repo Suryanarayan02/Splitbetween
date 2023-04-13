@@ -14,6 +14,7 @@ import strings from '../../constants/lang';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import navigationStrings from '../../navigation/navigationStrings';
+import {validateEmailId, validatePhoneNumber} from '../../utils/Validations';
 
 const ForgotPassword = props => {
   const {navigation} = props;
@@ -23,7 +24,17 @@ const ForgotPassword = props => {
   });
   const updateState = data => setState(state => ({...state, ...data}));
   const onChangeText = key => value => updateState({[key]: value});
-
+  const isValid = () => {
+    if (!validateEmailId(state.email)) {
+      if (validatePhoneNumber(state.email)) return false;
+    }
+    return true;
+  };
+  const onPressForgot = () => {
+    if (isValid()) {
+      navigation.navigate(navigationStrings.OTP_SCREEN);
+    } else alert('Input detail is not valid.');
+  };
   return (
     <WrapperContainer
       bgColor={colors.backGroundColor}
@@ -78,10 +89,7 @@ const ForgotPassword = props => {
             placeholder={strings.emailAddress}
           />
 
-          <ButtonWithIcon
-            onPress={() => navigation.navigate(navigationStrings.OTP_SCREEN)}
-            text={strings.sendOtp}
-          />
+          <ButtonWithIcon onPress={onPressForgot} text={strings.sendOtp} />
         </KeyboardAwareScrollView>
       </View>
     </WrapperContainer>

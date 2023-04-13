@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import FlashMessage from 'react-native-flash-message';
 import {Provider} from 'react-redux';
 import Routes from './src/navigation/Route';
 import store from './src/redux/store';
 import fontFamily from './src/styles/fontFamily';
 import {moderateScale} from './src/styles/responsiveSize';
+import SplashScreen from 'react-native-splash-screen';
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Provider store={store}>
       <Routes />

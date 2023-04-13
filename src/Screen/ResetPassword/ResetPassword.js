@@ -24,7 +24,12 @@ const ResetPassword = props => {
   });
   const updateState = data => setState(state => ({...state, ...data}));
   const onChangeText = key => value => updateState({[key]: value});
-
+  const onPressSave = () => {
+    if (state.password.length < 6)
+      alert('password must be greate the six letter');
+    else if (state.password != state.confirmPassword)
+      alert('password is not same.');
+  };
   return (
     <WrapperContainer
       bgColor={colors.backGroundColor}
@@ -88,7 +93,7 @@ const ResetPassword = props => {
             />
           </View>
 
-          <ButtonWithIcon text={strings.save} />
+          <ButtonWithIcon onPress={onPressSave} text={strings.save} />
         </KeyboardAwareScrollView>
       </View>
     </WrapperContainer>
