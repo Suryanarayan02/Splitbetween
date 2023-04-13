@@ -23,4 +23,22 @@ export default {
   forgotPassword: 'Forgot Password?',
   email: 'Email Address',
   password: 'Password',
+
+  // Forgot password
+  forgotPassword: 'Forgot Password',
+  emailAddress: 'Emamil Address/Phone Number',
+  sendOtp: 'Send OTP',
+  enterEmailaddText:
+    'Enter your emai addrees or phone number and we"ll send you a link to reset your password.',
+
+  // Otp screen
+  verification: 'Verification',
+  weHavesentText: 'We have sent verification code on mobile number.',
+  resendOpt: 'Resend OTP',
+  verify: 'Verify',
+
+  // reset password
+  resetPassword: 'Reset Password',
+  setYourPaas: 'Set your new password',
+  save: 'Save',
 };

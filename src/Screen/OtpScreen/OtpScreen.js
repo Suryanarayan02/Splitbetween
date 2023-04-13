@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import GradientButton from '../../Component/GradientButton';
 import HeaderComponent from '../../Component/HeaderComponent';
 import WrapperContainer from '../../Component/WrapperContainer';
@@ -10,9 +17,12 @@ import commonStyles from '../../styles/commonStyles';
 import {
   moderateScale,
   moderateScaleVertical,
+  textScale,
 } from '../../styles/responsiveSize';
 import OTPTextView from 'react-native-otp-textinput';
 import navigationStrings from '../../navigation/navigationStrings';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import ButtonWithIcon from '../../Component/ButtonWithIcon';
 
 export class OtpScreen extends Component {
   state = {
@@ -37,83 +47,92 @@ export class OtpScreen extends Component {
     const {phone, termSelected, showUserModal, isLoading, userData} =
       this.state;
     return (
-      <WrapperContainer isLoading={isLoading}>
-        <HeaderComponent
-          leftIcon={imagePath.backRoyo}
-          onPressLeft={() => this.props.navigation.goBack()}
-          // leftImageStyle={styles.leftImageStyle}
-          centerTitle={strings.ENTER_OTP}
-          headerStyle={{backgroundColor: colors.white}}
-          textStyle={{...commonStyles.font18Semibold, alignSelf: 'center'}}
-        />
-        <View style={{paddingHorizontal: moderateScale(16), flex: 1}}>
-          <View style={{flex: 1, justifyContent: 'center'}}>
-            <OTPTextView
-              ref={e => (this.input1 = e)}
-              // containerStyle={styles.textInputContainer}
-              textInputStyle={[
-                styles.roundedTextInput,
-                {borderWidth: 2, color: colors.themeColor},
-              ]}
-              tintColor={colors.themeColor}
-              handleTextChange={text => this.setState({otp: text})}
-              inputCount={4}
-              keyboardType="numeric"
-            />
-            <GradientButton
-              containerStyle={{marginTop: moderateScaleVertical(48)}}
-              btnText={strings.CONTINUE}
-              onPress={() => this.moveToScreen()}
-              btnStyle={{padding: moderateScaleVertical(12)}}
-            />
-            <View style={styles.termCondition}>
+      <WrapperContainer
+        bgColor={colors.backGroundColor}
+        statusBarColor={colors.white}>
+        <ImageBackground
+          source={imagePath.verificationGraphic}
+          resizeMode="contain"
+          style={{flex: 1, backgroundColor: colors.white}}>
+          <HeaderComponent
+            onPressLeft={() => this.props.navigation.goBack()}
+            leftIcon={imagePath.back}
+            leftImageStyle={{
+              borderWidth: 1,
+              borderRadius: 25,
+              borderColor: 'whitesmoke',
+            }}
+          />
+        </ImageBackground>
+
+        <View
+          style={{
+            flex: 1.7,
+            backgroundColor: colors.white,
+          }}>
+          <KeyboardAwareScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              flexGrow: 1,
+              justifyContent: 'space-around',
+            }}
+            style={{
+              backgroundColor: colors.backGroundColor,
+              paddingHorizontal: moderateScale(16),
+              paddingVertical: moderateScaleVertical(24),
+              borderTopRightRadius: moderateScaleVertical(34),
+              borderTopLeftRadius: moderateScaleVertical(34),
+              // paddingBottom: moderateScaleVertical(108),
+            }}>
+            <View>
+              <Text style={{fontSize: textScale(20)}}>
+                {strings.verification}
+              </Text>
               <Text
                 style={{
-                  flex: 1,
-                  ...commonStyles.font10SemiBold,
-                  color: colors.textGreyOpacity53,
-                  // textAlign: 'justify',
-                  marginRight: moderateScale(16),
+                  fontSize: textScale(13),
+                  lineHeight: textScale(17),
+                  color: colors.greyText,
                 }}>
-                {/* {strings.PRIVACY_MESSAGE} */}
-                By creating an account you agree to our{' '}
-                <Text
-                  onPress={() =>
-                    this.props.navigation.navigate(
-                      navigationStrings.PRIVACY_POLICY,
-                    )
-                  }
-                  style={{
-                    ...commonStyles.font10SemiBold,
-                    color: colors.themeColor,
-                  }}>
-                  Terms & condition{' '}
-                </Text>
-                and{' '}
-                <Text
-                  onPress={() =>
-                    this.props.navigation.navigate(
-                      navigationStrings.PRIVACY_POLICY,
-                    )
-                  }
-                  style={{
-                    ...commonStyles.font10SemiBold,
-                    color: colors.themeColor,
-                  }}>
-                  Privacy Policy
-                </Text>
+                {strings.weHavesentText}
               </Text>
-              <TouchableOpacity onPress={this.onPressPolicyTerm}>
-                <Image
-                  source={
-                    termSelected
-                      ? imagePath.checkSquareFilled
-                      : imagePath.tickBlank
-                  }
-                />
-              </TouchableOpacity>
             </View>
-          </View>
+            <View style={{flex: 1, justifyContent: 'center'}}>
+              <OTPTextView
+                ref={e => (this.input1 = e)}
+                // containerStyle={styles.textInputContainer}
+                textInputStyle={[
+                  {
+                    borderWidth: 1,
+                    borderRadius: moderateScale(6),
+                    borderBottomWidth: 1,
+                    fontWeight: 'normal',
+                  },
+                ]}
+                tintColor={colors.themeColor}
+                handleTextChange={text => this.setState({otp: text})}
+                inputCount={4}
+                keyboardType="numeric"
+              />
+              <Text
+                style={{
+                  color: colors.themeColor,
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  marginVertical: moderateScaleVertical(24),
+                }}>
+                {strings.resendOpt}
+              </Text>
+              <ButtonWithIcon
+                onPress={() =>
+                  this.props.navigation.navigate(
+                    navigationStrings.RESET_PASSWORD,
+                  )
+                }
+                text={strings.verify}
+              />
+            </View>
+          </KeyboardAwareScrollView>
         </View>
       </WrapperContainer>
     );

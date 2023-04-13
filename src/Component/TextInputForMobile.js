@@ -7,7 +7,7 @@ import {CountryPicker} from 'react-native-country-codes-picker';
 
 const TextInputForMobile = props => {
   const [show, setShow] = useState(false);
-  const [countryCode, setCountryCode] = useState('');
+  const [countryCode, setCountryCode] = useState('+91');
   const [flag, setFlag] = useState('');
   return (
     <TouchableOpacity
@@ -33,7 +33,7 @@ const TextInputForMobile = props => {
           {flag} {countryCode}
         </Text>
       </View>
-      <TextInputWithImage {...props} />
+      <TextInputWithImage containerStyle={{flex: 1}} {...props} />
       <CountryPicker
         show={show}
         // when picker button press you will get the country object with dial code

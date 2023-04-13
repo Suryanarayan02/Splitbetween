@@ -14,6 +14,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import TextInputWithImage from '../../Component/TextInputWithImage';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import TextInputForMobile from '../../Component/TextInputForMobile';
+import navigationStrings from '../../navigation/navigationStrings';
 
 const Signup = props => {
   const {navigation} = props;
@@ -98,7 +99,10 @@ const Signup = props => {
             onChangeText={onChangeText('phone')}
             placeholder={strings.mobileNumber}
           />
-          <ButtonWithIcon text={strings.signup} />
+          <ButtonWithIcon
+            onPress={() => navigation.navigate(navigationStrings.OTP_SCREEN)}
+            text={strings.signup}
+          />
           <Text
             style={{
               textAlign: 'center',

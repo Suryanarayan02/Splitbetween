@@ -5,6 +5,7 @@ export default {
   SIGNUP: 'SingUp',
   SIGNIN: 'Signin',
   FORGOT_PASSWORD: 'ForgotPassword',
+  RESET_PASSWORD:'ResetPassword',
   PRIVACY_POLICY: 'PrivacyPolicy',
   TERM_CONDITION: 'TermCondition',
 };

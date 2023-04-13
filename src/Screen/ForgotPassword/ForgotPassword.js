@@ -15,7 +15,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import navigationStrings from '../../navigation/navigationStrings';
 
-const Login = props => {
+const ForgotPassword = props => {
   const {navigation} = props;
   const [state, setState] = useState({
     email: '',
@@ -29,7 +29,7 @@ const Login = props => {
       bgColor={colors.backGroundColor}
       statusBarColor={colors.white}>
       <ImageBackground
-        source={imagePath.loginGraphic}
+        source={imagePath.forgotPasswordGraphic}
         resizeMode="contain"
         style={{flex: 1, backgroundColor: colors.white}}>
         <HeaderComponent
@@ -59,43 +59,33 @@ const Login = props => {
             borderTopLeftRadius: moderateScaleVertical(34),
             // paddingBottom: moderateScaleVertical(108),
           }}>
-          <Text style={{fontSize: textScale(20)}}>{strings.login}</Text>
-          <Text
-            style={{
-              fontSize: textScale(12),
-              lineHeight: textScale(15),
-              color: colors.greyText,
-            }}>
-            {strings.welcomeToLogin}
-          </Text>
+          <View>
+            <Text style={{fontSize: textScale(20)}}>
+              {strings.forgotPassword}
+            </Text>
+            <Text
+              style={{
+                fontSize: textScale(13),
+                lineHeight: textScale(17),
+                color: colors.greyText,
+              }}>
+              {strings.enterEmailaddText}
+            </Text>
+          </View>
           <TextInputWithImage
             value={state.email}
             onChangeText={onChangeText('email')}
-            placeholder={strings.email}
+            placeholder={strings.emailAddress}
           />
-          <TextInputWithImage
-            value={state.password}
-            onChangeText={onChangeText('password')}
-            placeholder={strings.password}
+
+          <ButtonWithIcon
+            onPress={() => navigation.navigate(navigationStrings.OTP_SCREEN)}
+            text={strings.sendOtp}
           />
-          <Text
-            onPress={() =>
-              navigation.navigate(navigationStrings.FORGOT_PASSWORD)
-            }
-            style={{
-              textAlign: 'center',
-              color: colors.themeColor,
-              fontWeight: 'bold',
-              fontSize: textScale(12),
-              marginTop: moderateScaleVertical(48),
-            }}>
-            {strings.forgotPassword}
-          </Text>
-          <ButtonWithIcon text={strings.login} />
         </KeyboardAwareScrollView>
       </View>
     </WrapperContainer>
   );
 };
 
-export default Login;
+export default ForgotPassword;

@@ -15,11 +15,12 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import navigationStrings from '../../navigation/navigationStrings';
 
-const Login = props => {
+const ResetPassword = props => {
   const {navigation} = props;
   const [state, setState] = useState({
     email: '',
     password: '',
+    confirmPassword: '',
   });
   const updateState = data => setState(state => ({...state, ...data}));
   const onChangeText = key => value => updateState({[key]: value});
@@ -29,7 +30,7 @@ const Login = props => {
       bgColor={colors.backGroundColor}
       statusBarColor={colors.white}>
       <ImageBackground
-        source={imagePath.loginGraphic}
+        source={imagePath.resetGraphic}
         resizeMode="contain"
         style={{flex: 1, backgroundColor: colors.white}}>
         <HeaderComponent
@@ -59,43 +60,39 @@ const Login = props => {
             borderTopLeftRadius: moderateScaleVertical(34),
             // paddingBottom: moderateScaleVertical(108),
           }}>
-          <Text style={{fontSize: textScale(20)}}>{strings.login}</Text>
-          <Text
-            style={{
-              fontSize: textScale(12),
-              lineHeight: textScale(15),
-              color: colors.greyText,
-            }}>
-            {strings.welcomeToLogin}
-          </Text>
-          <TextInputWithImage
-            value={state.email}
-            onChangeText={onChangeText('email')}
-            placeholder={strings.email}
-          />
-          <TextInputWithImage
-            value={state.password}
-            onChangeText={onChangeText('password')}
-            placeholder={strings.password}
-          />
-          <Text
-            onPress={() =>
-              navigation.navigate(navigationStrings.FORGOT_PASSWORD)
-            }
-            style={{
-              textAlign: 'center',
-              color: colors.themeColor,
-              fontWeight: 'bold',
-              fontSize: textScale(12),
-              marginTop: moderateScaleVertical(48),
-            }}>
-            {strings.forgotPassword}
-          </Text>
-          <ButtonWithIcon text={strings.login} />
+          <View>
+            <Text style={{fontSize: textScale(20)}}>
+              {strings.resetPassword}
+            </Text>
+            <Text
+              style={{
+                fontSize: textScale(12),
+                lineHeight: textScale(15),
+                color: colors.greyText,
+              }}>
+              {strings.setYourPaas}
+            </Text>
+          </View>
+          <View>
+            <TextInputWithImage
+              value={state.password}
+              onChangeText={onChangeText('password')}
+              placeholder={strings.password}
+              rightImage={imagePath.eyeOff}
+            />
+            <TextInputWithImage
+              value={state.confirmPassword}
+              onChangeText={onChangeText('confirmPassword')}
+              placeholder={strings.confirmPassword}
+              rightImage={imagePath.eyeOff}
+            />
+          </View>
+
+          <ButtonWithIcon text={strings.save} />
         </KeyboardAwareScrollView>
       </View>
     </WrapperContainer>
   );
 };
 
-export default Login;
+export default ResetPassword;
