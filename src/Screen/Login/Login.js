@@ -15,6 +15,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import navigationStrings from '../../navigation/navigationStrings';
 import {validateEmailId} from '../../utils/Validations';
+import {saveUserData} from '../../redux/actions/auth';
 
 const Login = props => {
   const {navigation} = props;
@@ -27,9 +28,11 @@ const Login = props => {
   };
   const updateState = data => setState(state => ({...state, ...data}));
   const onChangeText = key => value => updateState({[key]: value});
-  const onPressLogin = () => {
+  const onPressLogin = async () => {
     if (!isValid()) {
       alert('Please check all detail.');
+    } else {
+      await saveUserData({token: 'login complete'});
     }
   };
   return (

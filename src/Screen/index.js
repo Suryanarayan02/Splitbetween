@@ -1,3 +1,5 @@
+export {default as Home} from './Home.js/Home';
+
 export {default as ForgotPassword} from './ForgotPassword/ForgotPassword';
 export {default as ResetPassword} from './ResetPassword/ResetPassword';
 export {default as OnboardScreen} from './OnboardScreen/OnboardScreen';

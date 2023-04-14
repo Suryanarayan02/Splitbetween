@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import GradientButton from '../../Component/GradientButton';
 import HeaderComponent from '../../Component/HeaderComponent';
 import WrapperContainer from '../../Component/WrapperContainer';
 import imagePath from '../../constants/imagePath';
@@ -23,6 +22,7 @@ import OTPTextView from 'react-native-otp-textinput';
 import navigationStrings from '../../navigation/navigationStrings';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
+import {saveUserData} from '../../redux/actions/auth';
 
 export class OtpScreen extends Component {
   state = {
@@ -45,6 +45,8 @@ export class OtpScreen extends Component {
   onPressVerify = () => {
     if (this.state.otp.length < 4) {
       alert('Please complete OTP.');
+    } else if (this.props.route.params?.parentStack) {
+      saveUserData({token: 'login complete'});
     } else this.props.navigation.navigate(navigationStrings.RESET_PASSWORD);
   };
   render() {
@@ -71,7 +73,7 @@ export class OtpScreen extends Component {
 
         <View
           style={{
-            flex: 1.7,
+            flex: 1.5,
             backgroundColor: colors.white,
           }}>
           <KeyboardAwareScrollView
@@ -148,9 +150,6 @@ const styles = StyleSheet.create({
   phoneNumber: {},
   termCondition: {
     paddingVertical: moderateScaleVertical(48),
-    // justifyContent: 'center',
-    // justifyContent: 'space-between',
-    // marginTop: moderateScaleVertical(24),
     flexDirection: 'row',
     alignItems: 'center',
   },

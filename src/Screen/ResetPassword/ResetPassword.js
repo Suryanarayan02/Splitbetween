@@ -14,6 +14,7 @@ import strings from '../../constants/lang';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import navigationStrings from '../../navigation/navigationStrings';
+import {saveUserData} from '../../redux/actions/auth';
 
 const ResetPassword = props => {
   const {navigation} = props;
@@ -29,6 +30,7 @@ const ResetPassword = props => {
       alert('password must be greate the six letter');
     else if (state.password != state.confirmPassword)
       alert('password is not same.');
+    else saveUserData({token: 'login complete'});
   };
   return (
     <WrapperContainer

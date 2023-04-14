@@ -1,4 +1,4 @@
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, ImageBackground, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import TextInputWithImage from '../../Component/TextInputWithImage';
 import HeaderComponent from '../../Component/HeaderComponent';
@@ -15,6 +15,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import navigationStrings from '../../navigation/navigationStrings';
 import {validateEmailId, validatePhoneNumber} from '../../utils/Validations';
+import {responsiveText} from '../../styles/commonStyles';
 
 const ForgotPassword = props => {
   const {navigation} = props;
@@ -42,44 +43,29 @@ const ForgotPassword = props => {
       <ImageBackground
         source={imagePath.forgotPasswordGraphic}
         resizeMode="contain"
-        style={{flex: 1, backgroundColor: colors.white}}>
+        style={styles.imageBackgroundStyle}>
         <HeaderComponent
           onPressLeft={() => navigation.goBack()}
           leftIcon={imagePath.back}
-          leftImageStyle={{
-            borderWidth: 1,
-            borderRadius: 25,
-            borderColor: 'whitesmoke',
-          }}
+          leftImageStyle={styles.headerLeftImage}
         />
       </ImageBackground>
 
-      <View
-        style={{
-          flex: 1.7,
-          backgroundColor: colors.white,
-        }}>
+      <View style={styles.body}>
         <KeyboardAwareScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{flexGrow: 1, justifyContent: 'space-around'}}
-          style={{
-            backgroundColor: colors.backGroundColor,
-            paddingHorizontal: moderateScale(16),
-            paddingVertical: moderateScaleVertical(24),
-            borderTopRightRadius: moderateScaleVertical(34),
-            borderTopLeftRadius: moderateScaleVertical(34),
-            // paddingBottom: moderateScaleVertical(108),
-          }}>
+          style={styles.subBody}>
           <View>
             <Text style={{fontSize: textScale(20)}}>
               {strings.forgotPassword}
             </Text>
             <Text
-              style={{
-                fontSize: textScale(13),
-                lineHeight: textScale(17),
+              style={responsiveText({
+                fontSize: 14,
+                lineHeight: 17,
                 color: colors.greyText,
-              }}>
+              })}>
               {strings.enterEmailaddText}
             </Text>
           </View>
@@ -97,3 +83,24 @@ const ForgotPassword = props => {
 };
 
 export default ForgotPassword;
+
+const styles = StyleSheet.create({
+  imageBackgroundStyle: {flex: 1, backgroundColor: colors.white},
+  headerLeftImage: {
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: 'whitesmoke',
+  },
+
+  body: {
+    flex: 1.7,
+    backgroundColor: colors.white,
+  },
+  subBody: {
+    backgroundColor: colors.backGroundColor,
+    paddingHorizontal: moderateScale(16),
+    paddingVertical: moderateScaleVertical(24),
+    borderTopRightRadius: moderateScaleVertical(34),
+    borderTopLeftRadius: moderateScaleVertical(34),
+  },
+});

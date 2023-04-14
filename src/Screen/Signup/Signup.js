@@ -15,6 +15,11 @@ import TextInputWithImage from '../../Component/TextInputWithImage';
 import ButtonWithIcon from '../../Component/ButtonWithIcon';
 import TextInputForMobile from '../../Component/TextInputForMobile';
 import navigationStrings from '../../navigation/navigationStrings';
+import {
+  validateEmailId,
+  validateFullName,
+  validatePhoneNumber,
+} from '../../utils/Validations';
 
 const Signup = props => {
   const {navigation} = props;
@@ -27,6 +32,28 @@ const Signup = props => {
   });
   const updateState = data => setState(state => ({...state, ...data}));
   const onChangeText = key => value => updateState({[key]: value});
+  const isValid = () => {
+    if (validateFullName(state.name, 'Full name')) {
+      alert('Enter valid full name.');
+      return false;
+    } else if (!validateEmailId(state.email)) {
+      alert('email is not valid.');
+      return false;
+    } else if (state.password < 6) {
+      alert('password is less than 6 digit');
+      return false;
+    } else if (state.password != state.confirmPassword) {
+      alert('password do not match');
+      return false;
+    } else if (validatePhoneNumber(state.phone)) {
+      alert('Enter valid phone number.');
+      return false;
+    }
+    return true;
+  };
+  const onPressSignup = () => {
+    if (isValid()) navigation.navigate(navigationStrings.OTP_SCREEN, {parentStack: 'signup'});
+  };
   return (
     <WrapperContainer
       bgColor={colors.backGroundColor}
@@ -99,10 +126,7 @@ const Signup = props => {
             onChangeText={onChangeText('phone')}
             placeholder={strings.mobileNumber}
           />
-          <ButtonWithIcon
-            onPress={() => navigation.navigate(navigationStrings.OTP_SCREEN)}
-            text={strings.signup}
-          />
+          <ButtonWithIcon onPress={onPressSignup} text={strings.signup} />
           <Text
             style={{
               textAlign: 'center',

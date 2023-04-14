@@ -6,9 +6,17 @@ import store from './src/redux/store';
 import fontFamily from './src/styles/fontFamily';
 import {moderateScale} from './src/styles/responsiveSize';
 import SplashScreen from 'react-native-splash-screen';
+import {getUserData} from './src/utils/utils';
+import {userData} from './src/redux/actions/auth';
 const App = () => {
   useEffect(() => {
-    SplashScreen.hide();
+    getUserData()
+      .then(res => userData(res))
+      .catch(error => console.log(error));
+
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 0);
   }, []);
   return (
     <Provider store={store}>

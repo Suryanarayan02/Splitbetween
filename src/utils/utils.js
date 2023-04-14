@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {PermissionsAndroid, Platform} from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
+// import Geolocation from 'react-native-geolocation-service';
 // import firebase from 'react-native-firebase';
 // import NavigationService from '../router/NavigationService';
 // import store from '../redux/store';
@@ -22,7 +22,6 @@ export async function getHeaders() {
 
 export function setUserData(data) {
   data = JSON.stringify(data);
-  console.log(data, 'hello')
   return AsyncStorage.setItem('userData', data);
 }
 
@@ -173,7 +172,6 @@ export function randomString(len = 5) {
 // export async function requestPermission() {
 //   console.log('hi')
 //   try {
-//     console.log('hello')
 //     await firebase.messaging().requestPermission();
 //     // User has authorised
 //     this.getToken();
@@ -226,37 +224,37 @@ export const androidCameraPermission = () =>
     }
   });
 
-export const locationPermission = () =>
-  new Promise(async (resolve, reject) => {
-    if (Platform.OS === 'ios') {
-      try {
-        const permissionStatus = await Geolocation.requestAuthorization(
-          'whenInUse',
-        );
-        if (permissionStatus === 'granted') {
-          return resolve('granted');
-        }
-        reject('Permission not granted');
-      } catch (error) {
-        return reject(error);
-      }
-    } else {
-      return PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      )
-        .then(granted => {
-          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            //console.log('You can use the location');
-            return resolve('granted');
-          }
-          //console.log('Location permission denied');
-          else {
-            return reject('Location permission denied');
-          }
-        })
-        .catch(error => {
-          console.log('Ask Location permission error: ', error);
-          return reject(error);
-        });
-    }
-  });
+// export const locationPermission = () =>
+//   new Promise(async (resolve, reject) => {
+//     if (Platform.OS === 'ios') {
+//       try {
+//         const permissionStatus = await Geolocation.requestAuthorization(
+//           'whenInUse',
+//         );
+//         if (permissionStatus === 'granted') {
+//           return resolve('granted');
+//         }
+//         reject('Permission not granted');
+//       } catch (error) {
+//         return reject(error);
+//       }
+//     } else {
+//       return PermissionsAndroid.request(
+//         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+//       )
+//         .then(granted => {
+//           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+//             //console.log('You can use the location');
+//             return resolve('granted');
+//           }
+//           //console.log('Location permission denied');
+//           else {
+//             return reject('Location permission denied');
+//           }
+//         })
+//         .catch(error => {
+//           console.log('Ask Location permission error: ', error);
+//           return reject(error);
+//         });
+//     }
+//   });

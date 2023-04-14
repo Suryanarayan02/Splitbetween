@@ -8,4 +8,10 @@ export default {
   RESET_PASSWORD:'ResetPassword',
   PRIVACY_POLICY: 'PrivacyPolicy',
   TERM_CONDITION: 'TermCondition',
+
+
+
+
+  HOME: 'Home',
+  SETTING: 'Setting',
 };
