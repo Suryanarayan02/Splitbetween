@@ -1,3 +1,8 @@
+export {default as Account} from './Account/Account';
+export {default as Activity} from './Activity/Activity';
+export {default as Friends} from './Friends/Friends';
+export {default as Groups} from './Groups/Groups';
+
 export {default as Home} from './Home.js/Home';
 
 export {default as ForgotPassword} from './ForgotPassword/ForgotPassword';
