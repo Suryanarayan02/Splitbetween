@@ -15,4 +15,6 @@ export default {
   FRIENDS: 'Friends',
   ACTIVITY: 'Activity',
   ACCOUNT: 'Account',
+  ADDFRIEND: 'AddFriend',
+  CREATEGRP: 'CreateGrp',
 };

@@ -1,3 +1,6 @@
+export {default as AddFriend} from './AddFriend/AddFriend';
+export {default as CreateGroup} from './CreateGroup/CreateGroup';
+
 export {default as Account} from './Account/Account';
 export {default as Activity} from './Activity/Activity';
 export {default as Friends} from './Friends/Friends';

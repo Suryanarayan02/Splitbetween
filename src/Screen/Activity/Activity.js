@@ -1,12 +1,18 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text} from 'react-native';
+import React from 'react';
+import colors from '../../styles/colors';
+import WrapperContainer from '../../Component/WrapperContainer';
 
-const Activity = () => {
+const Activity = props => {
+  const {navigation} = props;
+
   return (
-    <View>
+    <WrapperContainer
+      bgColor={colors.backGroundColor}
+      statusBarColor={colors.white}>
       <Text>Activity</Text>
-    </View>
-  )
-}
+    </WrapperContainer>
+  );
+};
 
-export default Activity
+export default Activity;

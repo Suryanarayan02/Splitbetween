@@ -11,7 +11,7 @@ export default function BottomTab() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarLabelStyle: {fontSize: 12},
+        tabBarLabelStyle: {fontSize: 10, fontWeight: 'bold'},
       }}>
       <Tab.Screen
         options={{

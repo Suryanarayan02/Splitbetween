@@ -40,4 +40,27 @@ export default {
   resetPassword: 'Reset Password',
   setYourPaas: 'Set your new password',
   save: 'Save',
+
+  // Friends
+  welcomeToSplit: 'Welcome to SplitBetween, John',
+  asYouuseSplit: 'As you use SplitBetween, Friends and group mates will show',
+  addFreind: 'Add Friends',
+  // Group
+  welcomeToSplit: 'Welcome to SplitBetween, John',
+  asYouuseSplit: 'As you use SplitBetween, Friends and group mates will show',
+  startANewGrp: 'Start a new group',
+
+  // create a group
+  createAGroup: 'Create a Group',
+  groupName: 'Group Name',
+  type: 'Type',
+  done: 'Done',
+  // add Friends
+  addFriend: 'Add Friends',
+  enterNameMailOrPhone: 'Enter name, email, or phone',
+  addANewContactToSplit: 'Add a new contact to SplitBetween',
+  fromYourContacts: 'From your contacts',
+  allowcontactAccess: 'Allow contact access',
+  allowSplitbetweentoaccess:
+    'Allow SplitBetweeb to access your contacts to add people faster.',
 };
