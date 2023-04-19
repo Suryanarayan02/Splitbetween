@@ -17,4 +17,6 @@ export default {
   ACCOUNT: 'Account',
   ADDFRIEND: 'AddFriend',
   CREATEGRP: 'CreateGrp',
+  ADDCONTACT: 'AddContact',
+  VERIFYCONTACT: 'VerifyContact',
 };

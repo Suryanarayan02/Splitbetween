@@ -64,4 +64,14 @@ export default {
   allowcontactAccess: 'Allow contact access',
   allowSplitbetweentoaccess:
     'Allow SplitBetweeb to access your contacts to add people faster.',
+  // add a new contact
+  addAnewContact: 'Add a new contact',
+  fullName: 'Full Name',
+  phoneNumberOrEamil: 'Phone number or email address.',
+  done: 'Done',
+  // verify contact info
+  verifyContactInfo: 'Verify contact info',
+  thesePeoplewillnotifiedyou:
+    'These people will be notified you have added them as a friend. You can start adding expenses right away.',
+  finish: 'Finish',
 };

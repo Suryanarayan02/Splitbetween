@@ -1,3 +1,6 @@
+export {default as AddContact} from './AddContact/AddContact';
+export {default as VerifyContact} from './VerifyContact/VerifyContact';
+
 export {default as AddFriend} from './AddFriend/AddFriend';
 export {default as CreateGroup} from './CreateGroup/CreateGroup';
 

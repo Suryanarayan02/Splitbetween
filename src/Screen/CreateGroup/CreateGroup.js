@@ -58,8 +58,6 @@ const CreateGroup = props => {
           onChangeText={onChangeText}
           value={groupName}
           containerStyle={{
-            borderWidth: 1,
-            borderColor: colors.themeColor,
             backgroundColor: colors.backGroundColor,
           }}
           placeholder={strings.groupName}

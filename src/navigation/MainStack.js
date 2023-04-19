@@ -1,5 +1,11 @@
 import React from 'react';
-import {AddFriend, CreateGroup, Home} from '../Screen';
+import {
+  AddContact,
+  AddFriend,
+  CreateGroup,
+  Home,
+  VerifyContact,
+} from '../Screen';
 import navigationStrings from './navigationStrings';
 import BottomTab from './BottomTab';
 
@@ -11,6 +17,14 @@ const MainStack = Stack => {
       <Stack.Screen
         name={navigationStrings.CREATEGRP}
         component={CreateGroup}
+      />
+      <Stack.Screen
+        name={navigationStrings.ADDCONTACT}
+        component={AddContact}
+      />
+      <Stack.Screen
+        name={navigationStrings.VERIFYCONTACT}
+        component={VerifyContact}
       />
     </>
   );
